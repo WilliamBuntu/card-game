@@ -1,31 +1,81 @@
 import random
 
-cards = []
-suits = ['hearts', 'diamonds', 'clubs', 'spades']
-ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10',
-          'J', 'Q', 'K']
+class Card:
+    def __init__(self, suit, rank):
+        self.suit = suit
+        self.rank = rank
 
-for suit in suits:
-    for rank in ranks:
-        cards.append([suit, rank])
+    def __str__(self):
+        return f"{self.rank['rank']} of  {self.suit}"
 
-
-def shuffle():
-    random.shuffle(cards)
+class Deck:
+    def __init__(self):
 
 
-def deal(number):
-    cards_dealt = []
-
-    for x in range(number):
-        card = cards.pop()
-        cards_dealt.append(card)
+        self.cards = []
+        suits = ['hearts', 'diamonds', 'clubs', 'spades']
 
 
-    return cards_dealt
+        # ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+        #'J', 'Q', 'K']
 
-shuffle()
 
+        ranks = [
+                {'rank': 'A', 'value': 11},
+                {'rank': '2', 'value': 2},
+                {'rank': '3', 'value': 3},
+                {'rank': '4', 'value': 4},
+                {'rank': '5', 'value': 5},
+                {'rank': '6', 'value': 6},
+                {'rank': '7', 'value': 7},
+                {'rank': '8', 'value': 8},
+                {'rank': '9', 'value': 9},
+                {'rank': '10', 'value': 10},
+                {'rank': 'J', 'value': 10},
+                {'rank': 'Q', 'value': 10},
+                {'rank': 'K', 'value': 10},
+
+        ]
+        for suit in suits:
+            for rank in ranks:
+                self.cards.append(Card(suit, rank))
+
+
+    def shuffle(self):
+        if self.cards > 1:
+            random.shuffle(self.cards)
+
+
+    def deal(self, number):
+        cards_dealt = []
+
+        for x in range(number):
+            if len (self.cards) > 0 :
+                card = self.cards.pop()
+                cards_dealt.append(card)
+
+
+        return cards_dealt
+
+
+
+class Hand:
+     def __init__(self):
+         self.cards = []
+
+
+
+
+
+
+
+
+
+
+    # shuffle()
+    # card = deal(2)[1]
+    # print(card[1]['value'])
+# //////////////////////////////////////////////////////////////////////////////////////////
 
 # cards_dealt = deal(2)
 
@@ -43,3 +93,5 @@ shuffle()
 
 # rank_dict = {'rank': rank , 'value': value}
 # print(rank_dict['rank'], rank_dict['value'])
+
+# //////////////////////////////////////////////////////////////////////////////////////////////////
